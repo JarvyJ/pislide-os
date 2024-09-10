@@ -1,0 +1,12 @@
+config BR2_PACKAGE_RAYIMG
+	bool "rayimg"
+	depends on BR2_PACKAGE_HOST_GO_TARGET_ARCH_SUPPORTS
+	depends on BR2_PACKAGE_HOST_GO_TARGET_CGO_LINKING_SUPPORTS
+	depends on BR2_TOOLCHAIN_HAS_THREADS
+	depends on BR2_PACKAGE_HAS_LIBGLES
+	depends on BR2_PACKAGE_HAS_LIBEGL
+	depends on BR2_PACKAGE_HAS_LIBGBM
+	depends on BR2_PACKAGE_LIBDRM
+	depends on BR2_PACKAGE_LIBVIPS_MESON
+	help
+	  Build the binary rayimg

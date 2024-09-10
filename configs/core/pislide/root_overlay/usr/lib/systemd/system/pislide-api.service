@@ -1,0 +1,11 @@
+[Unit]
+Description=Starts the API
+After=network.target
+
+[Service]
+Type=simple
+Environment="SLIDE_DIR=/mnt/persist" PORT=80
+ExecStart=/usr/bin/pislide-api
+Restart=on-failure
+RestartSec=15
+TimeoutStartSec=infinity

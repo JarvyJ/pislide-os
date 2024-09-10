@@ -1,0 +1,3 @@
+source "$BR2_EXTERNAL_RAYIMG_PATH/package/rayimg/Config.in"
+source "$BR2_EXTERNAL_RAYIMG_PATH/package/pislideapi/Config.in"
+source "$BR2_EXTERNAL_RAYIMG_PATH/package/libvips-meson/Config.in"

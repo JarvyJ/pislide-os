@@ -1,0 +1,27 @@
+kernel=zImage
+initramfs rootfs.cpio.lz4
+
+# Use the extended feature firmware
+start_file=start.elf
+fixup_file=fixup.dat
+
+# fixes rpi (3B, 3B+, 3A+, 4B and Zero W) ttyAMA0 serial console
+dtoverlay=disable-bt
+
+# Disable overscan assuming the display supports displaying the full resolution
+# If the text shown on the screen disappears off the edge, comment this out
+# disable_overscan=1
+
+# Force hdmi hotplug
+# hdmi_force_hotplug=1
+
+# Uncomment to force HD and prevent 4k memory drain
+# hdmi_group=1
+# hdmi_mode=16
+# [hdmi:0]
+# hdmi_max_pixel_freq=200000000
+# [hdmi:1]
+# hdmi_max_pixel_freq=200000000
+
+# This is the modern kernel modesetting driver.
+dtoverlay=vc4-kms-v3d

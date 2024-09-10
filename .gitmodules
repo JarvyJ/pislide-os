@@ -1,0 +1,3 @@
+[submodule "skiffos"]
+	path = skiffos
+	url = https://github.com/skiffos/skiffos

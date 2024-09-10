@@ -1,0 +1,10 @@
+[Unit]
+Description=Start the Slideshow Service
+After=mnt-persist.mount
+
+[Service]
+Type=simple
+ExecStart=/bin/sh -c "cd /mnt/persist/slideshows && ./activate_slideshow.sh"
+Restart=on-failure
+RestartSec=15
+TimeoutStartSec=infinity
