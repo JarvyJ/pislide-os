@@ -44,13 +44,13 @@ sudo parted $PI_SD mklabel msdos
 sleep 1
 
 echo "Making boot partition..."
-sudo parted -a optimal $PI_SD -- mkpart primary fat32 0% 8G
+sudo parted -a optimal $PI_SD -- mkpart primary fat32 0% 300M
 
 echo "Making rootfs partition..."
-sudo parted -a optimal $PI_SD -- mkpart primary ext4 8G 10G
+sudo parted -a optimal $PI_SD -- mkpart primary ext4 300M 800M
 
 echo "Making persist partition..."
-sudo parted -a optimal $PI_SD -- mkpart primary ext4 10G "-1s"
+sudo parted -a optimal $PI_SD -- mkpart primary fat32 800M "-1s"
 
 echo "Waiting for partprobe..."
 sudo partprobe $PI_SD || true
