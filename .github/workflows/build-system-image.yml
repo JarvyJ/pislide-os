@@ -1,0 +1,72 @@
+name: Build System Images
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+    tags: [ '*.*.*' ]
+
+jobs:
+  build-system-image:
+    strategy:
+      fail-fast: false
+      matrix:
+        system: [pi0, pi0v2, pi1, pi2, pi3, pi4, pi5]
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Cache Buildroot compile cache + dls
+        uses: actions/cache@v4
+        with:
+          path: ~/br-cache
+          key: ${{ runner.os }}-buildroot-${{ matrix.system }}-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildroot-${{ matrix.system }}-
+            ${{ runner.os }}-buildroot-
+
+      - name: Set arch var
+        id: vars
+        run: |
+          echo ::set-output name=arch::\
+          $(echo '{ 
+          "pi0": "pi/0", 
+          "pi0v2" : "pi/0v2",
+          "pi1": "pi/1",
+          "pi2": "pi/2",
+          "pi3": "pi/3x64", 
+          "pi4": "pi/4",
+          "pi5": "pi/5"
+          }'  | jq -r 'to_entries[] | select(.key=="${{ matrix.system }}") | .value')
+
+      - name: Build ${{ matrix.system }} Image
+        run: |
+          export SKIFF_CONFIG=${{ steps.vars.outputs.arch }},core/pislide
+          export TERM=xterm
+          export BR2_CCACHE_DIR=${HOME}/br-cache/ccache
+          export BR2_DL_DIR=${HOME}/br-cache/dl
+          make configure && make compile
+
+      - name: Make SD Image
+        run: sudo TERM=xterm PI_IMAGE=/tmp/${{ matrix.system }}-pislide-os.img make cmd/core/pislide/buildimage
+
+      - name: Gzip the SD Image
+        run: pigz -9 -f -k /tmp/${{ matrix.system }}-pislide-os.img
+
+      - name: Upload!
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.system }}-pislide-os.img.gz
+          path: /tmp/${{ matrix.system }}-pislide-os.img.gz
+          compression-level: 0
+  
