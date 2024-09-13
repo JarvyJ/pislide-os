@@ -50,7 +50,7 @@ echo "Making rootfs partition..."
 sudo parted -a optimal $PI_SD -- mkpart primary ext4 300M 800M
 
 echo "Making persist partition..."
-sudo parted -a optimal $PI_SD -- mkpart primary fat32 800M "-1s"
+sudo parted -a optimal $PI_SD -- mkpart primary ext4 800M "-1s"
 
 echo "Waiting for partprobe..."
 sudo partprobe $PI_SD || true
