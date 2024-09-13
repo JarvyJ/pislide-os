@@ -1,27 +1,61 @@
+[pi0]
 kernel=zImage
-initramfs rootfs.cpio.lz4
-
-# Use the extended feature firmware
 start_file=start.elf
 fixup_file=fixup.dat
-
-# fixes rpi (3B, 3B+, 3A+, 4B and Zero W) ttyAMA0 serial console
 dtoverlay=disable-bt
-
-# Disable overscan assuming the display supports displaying the full resolution
-# If the text shown on the screen disappears off the edge, comment this out
-# disable_overscan=1
-
-# Force hdmi hotplug
-# hdmi_force_hotplug=1
-
-# Uncomment to force HD and prevent 4k memory drain
-# hdmi_group=1
-# hdmi_mode=16
-# [hdmi:0]
-# hdmi_max_pixel_freq=200000000
-# [hdmi:1]
-# hdmi_max_pixel_freq=200000000
-
-# This is the modern kernel modesetting driver.
 dtoverlay=vc4-kms-v3d
+
+[pi02]
+kernel=zImage
+start_file=start_x.elf
+fixup_file=fixup_x.dat
+dtoverlay=disable-bt
+dtoverlay=vc4-kms-v3d
+
+[pi1]
+kernel=zImage
+start_file=start_x.elf
+fixup_file=fixup_x.dat
+dtoverlay=disable-bt
+dtoverlay=vc4-kms-v3d
+
+[pi2]
+kernel=zImage
+start_file=start_x.elf
+fixup_file=fixup_x.dat
+dtoverlay=disable-bt
+dtoverlay=vc4-kms-v3d
+
+[pi3]
+kernel=Image
+start_file=start_x.elf
+fixup_file=fixup_x.dat
+dtoverlay=disable-bt
+dtoverlay=vc4-kms-v3d
+arm_64bit=1
+
+[pi4]
+kernel=Image
+start_file=start4x.elf
+fixup_file=fixup4x.dat
+dtoverlay=disable-bt
+dtoverlay=vc4-kms-v3d-pi4
+arm_64bit=1
+
+[pi5]
+kernel=Image
+start_file=start4x.elf
+fixup_file=fixup4x.dat
+dtoverlay=disable-bt-pi5
+dtoverlay=vc4-kms-v3d-pi5
+arm_64bit=1
+
+[all]
+initramfs rootfs.cpio.lz4
+disable_splash=1
+# should be enough for video playback in the future
+gpu_mem=64
+disable_overscan=1
+hdmi_force_hotplug=1
+hdmi_drive=2
+
