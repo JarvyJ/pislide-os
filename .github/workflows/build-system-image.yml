@@ -12,7 +12,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        system: [pi0, pi0v2, pi1, pi2, pi3, pi4, pi5]
+        system: [pi0, pi3] # will enable the rest after getting the workflow working
+        # system: [pi0, pi0v2, pi1, pi2, pi3, pi4, pi5]
 
     runs-on: ubuntu-latest
 
