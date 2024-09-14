@@ -55,8 +55,7 @@ jobs:
       - name: Set arch var
         id: vars
         run: |
-          echo ::set-output name=arch::\
-          $(echo '{ 
+          echo PISLIDE_ARCH=$(echo '{ 
           "pi0": "pi/0", 
           "pi0v2" : "pi/0v2",
           "pi1": "pi/1",
@@ -64,11 +63,11 @@ jobs:
           "pi3": "pi/3x64", 
           "pi4": "pi/4",
           "pi5": "pi/5"
-          }'  | jq -r 'to_entries[] | select(.key=="${{ matrix.system }}") | .value')
+          }'  | jq -r 'to_entries[] | select(.key=="${{ matrix.system }}") | .value') >> $GITHUB_ENV
 
       - name: Build ${{ matrix.system }} Image
         run: |
-          export SKIFF_CONFIG=${{ steps.vars.outputs.arch }},core/pislide
+          export SKIFF_CONFIG=$PISLIDE_ARCH,core/pislide
           export TERM=xterm
           export BR2_CCACHE_DIR=${HOME}/br-cache/ccache
           export BR2_DL_DIR=${HOME}/br-cache/dl
