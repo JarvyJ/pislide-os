@@ -47,10 +47,10 @@ echo "Making boot partition..."
 sudo parted -a optimal $PI_SD -- mkpart primary fat32 0% 300M
 
 echo "Making rootfs partition..."
-sudo parted -a optimal $PI_SD -- mkpart primary ext4 300M 800M
+sudo parted -a optimal $PI_SD -- mkpart primary ext4 300M 400M
 
 echo "Making persist partition..."
-sudo parted -a optimal $PI_SD -- mkpart primary ext4 800M "-1s"
+sudo parted -a optimal $PI_SD -- mkpart primary ext4 400M 500M
 
 echo "Waiting for partprobe..."
 sudo partprobe $PI_SD || true
