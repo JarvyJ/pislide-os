@@ -1,0 +1,86 @@
+name: Build System Images
+
+on:
+  push:
+    branches:
+      - main
+    tags: [ '*.*.*' ]
+
+jobs:
+  build-system-image:
+    strategy:
+      fail-fast: false
+      matrix:
+        system: [pi0, pi0v2, pi1, pi2, pi3, pi4, pi5]
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
+        with:
+          # this might remove tools that are actually needed,
+          # if set to "true" but frees about 6 GB
+          tool-cache: false
+          
+          # all of these default to true, but feel free to set to
+          # "false" if necessary for your workflow
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+          swap-storage: false
+    
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Cache Buildroot compile cache + dls
+        uses: actions/cache@v4
+        with:
+          path: ~/br-cache
+          key: ${{ runner.os }}-buildroot-${{ matrix.system }}-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildroot-${{ matrix.system }}-
+            ${{ runner.os }}-buildroot-
+
+      - name: Set arch var
+        id: vars
+        run: |
+          echo PISLIDE_ARCH=$(echo '{ 
+          "pi0": "pi/0", 
+          "pi0v2" : "pi/0v2",
+          "pi1": "pi/1",
+          "pi2": "pi/2",
+          "pi3": "pi/3x64", 
+          "pi4": "pi/4",
+          "pi5": "pi/5"
+          }'  | jq -r 'to_entries[] | select(.key=="${{ matrix.system }}") | .value') >> $GITHUB_ENV
+
+      - name: Build ${{ matrix.system }} Image
+        run: |
+          export SKIFF_CONFIG=$PISLIDE_ARCH,core/pislide
+          export TERM=xterm
+          export BR2_CCACHE_DIR=${HOME}/br-cache/ccache
+          export BR2_DL_DIR=${HOME}/br-cache/dl
+          make configure && make compile
+
+      - name: Make SD Image
+        run: sudo TERM=xterm PI_IMAGE=/tmp/${{ matrix.system }}-pislide-os.img make cmd/core/pislide/buildimage
+
+      - name: Gzip the SD Image
+        run: pigz -9 -f -k /tmp/${{ matrix.system }}-pislide-os.img
+
+      - name: Upload!
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.system }}-pislide-os.img.gz
+          path: /tmp/${{ matrix.system }}-pislide-os.img.gz
+          compression-level: 0
+  
