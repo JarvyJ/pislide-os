@@ -6,6 +6,8 @@ PHOTO_DEV_DEVICE=${SD_CARD}p4
 PHOTOS_DEVICE="LABEL=PHOTOS"
 PHOTOS_MNT=/mnt/photos
 
+first_boot=false
+
 if ! findfs $PHOTOS_DEVICE; then
   echo "Creating the PHOTOS device"
   parted -a optimal $SD_CARD -- mkpart primary fat32 500MB "-1s"
@@ -16,6 +18,8 @@ if ! findfs $PHOTOS_DEVICE; then
   mkfs.vfat -n PHOTOS -F 32 $PHOTO_DEV_DEVICE
   partprobe $SD_CARD
   sleep 2
+
+  first_boot=true
 fi
 
 # Mount photos device, if applicable.
@@ -34,5 +38,12 @@ if ! mountpoint -q ${PHOTOS_MNT}; then
         sleep 1
     done
 fi
+
+if [ "$first_boot" = true ] ; then
+    echo 'Copying initial images'
+    echo "setup_instructions" > $PHOTOS_MNT/active_slideshow.txt
+    cp -r /opt/pislide-os/setup_instructions $PHOTOS_MNT/
+fi
+
 
 export DISABLE_RESIZE_PERSIST="true"
