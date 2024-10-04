@@ -1,4 +1,4 @@
-RAYIMG_VERSION = 0.0.2
+RAYIMG_VERSION = 0.0.3
 RAYIMG_SITE = https://github.com/JarvyJ/rayimg
 RAYIMG_SITE_METHOD = git
 RAYIMG_GOMOD = github.com/JarvyJ/rayimg
