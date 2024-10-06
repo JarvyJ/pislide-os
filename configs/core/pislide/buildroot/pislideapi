@@ -13,5 +13,5 @@ BR2_PACKAGE_FFMPEG_INDEVS=y
 BR2_PACKAGE_FFMPEG_OUTDEVS=y
 BR2_PACKAGE_FFMPEG_EXTRACONF=""
 
-# install pislideapi
-BR2_PACKAGE_PISLIDEAPI=y
+# install pislideapi (currently disabled since it needs more work)
+BR2_PACKAGE_PISLIDEAPI=n

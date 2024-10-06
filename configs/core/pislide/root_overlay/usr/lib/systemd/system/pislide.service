@@ -1,10 +1,11 @@
 [Unit]
 Description=Start the Slideshow Service
-After=mnt-persist.mount
+After=mnt-photos.mount
 
 [Service]
 Type=simple
-ExecStart=/bin/sh -c "cd /mnt/persist/slideshows && ./activate_slideshow.sh"
+Environment=DISPLAY_ERROR=1 CACHE_DIR=/mnt/photos/_cache
+ExecStart=/bin/sh -c "cd /mnt/photos && rayimg \"$(cat active_slideshow.txt)\""
 Restart=on-failure
-RestartSec=15
+RestartSec=30
 TimeoutStartSec=infinity
