@@ -52,5 +52,4 @@ If all goes well, your new slideshow should be showing up on screen with the set
   - SD Cards still wear down over time due to reads/writes, and a higher quality SD card should last longer
 - Due to how the OS is setup, it is _generally safe_ to unplug the Pi after PiSlide OS has started
   - Ideally it would be powered off with the `shutdown` command, but there is currently no easy way to issue the command (network access should allow for it, or adding support for a shutdown button, but neither are currently implemented)
-- The image viewer we use will automatically resize images based on the screen resolution. It stores these images in `PHOTOS` in a folder called `_cache`.
-  - If you ever update a photo and notice it hasn't changed what is displayed. Look in that directory and remove the associated image.
+- The image viewer we use will automatically resize images based on the screen resolution. You may see a folder called `_cache` in `PHOTOS`, that is where these are stored. This directory gets cleared on every boot, so you shouldn't have to worry about it!
