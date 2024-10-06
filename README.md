@@ -53,3 +53,6 @@ If all goes well, your new slideshow should be showing up on screen with the set
 - Due to how the OS is setup, it is _generally safe_ to unplug the Pi after PiSlide OS has started
   - Ideally it would be powered off with the `shutdown` command, but there is currently no easy way to issue the command (network access should allow for it, or adding support for a shutdown button, but neither are currently implemented)
 - The image viewer we use will automatically resize images based on the screen resolution. These are stored in `_cache` in `PHOTOS`. This directory gets cleared on every boot, so you shouldn't have to worry about it!
+
+## Community
+Honestly I would love to see/hear about how folks use this. Feel free to post in our [GitHub Discussions](https://github.com/JarvyJ/pislide-os/discussions) section. Also for any features suggestions or questions!
