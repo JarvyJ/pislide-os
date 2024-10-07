@@ -1,7 +1,9 @@
-# pislide-os
-pislide-os is a Raspberry Pi operating system designed for easily displaying photos on a Raspberry Pi. It's currently in a very early state and we've _just barely_ got everything working together. It can one day be used to create digital photo frames, digital signage, or just constantly playing a gifs fun.
+# PiSlide OS
+PiSlide OS is the simplest way to get photo slideshows working on a Raspberry Pi. It supports most common image formats (JPG, PNG, WEBP, AVIF, JXL, HEIF, HEIC, SVG, BMP, TIFF, and QOI) with plans for animated GIFs and maybe even videos in the future! 
 
-It has currently been tested and works well on a Pi 3.
+- Images are provided for Pi 2-5 and 0v2. Original Pi 0 and Pi 1 images hopefully coming soon!
+- It has currently been tested and works well on a Pi 3 and 4.
+- We currently don't have all Pi revisions to test with, so if there are any issues, let us know!
 
 ## Installation
 1. Go to the [releases](https://github.com/JarvyJ/pislide-os/releases) section in GitHub
@@ -10,7 +12,7 @@ It has currently been tested and works well on a Pi 3.
     - Under "Operating System", choose "Use Custom" on the bottom of the list and select the image you downloaded
     - We currently do not support any customizations (ssh, wifi, etc)
 4. When flashing is complete, plug the SD card in and boot it up!
-    - First boot can take 30-60s, and you will be greeted by a slideshow when completed
+    - First boot can take ~30s, and you will be greeted by a slideshow when completed
 
 ## Slideshow Setup
 Now that the system has been setup, you can go ahead and setup your own images!
@@ -46,13 +48,17 @@ Sort = "natural"
 
 If all goes well, your new slideshow should be showing up on screen with the settings specified. If not, you should get an error message in big text on screen that hopefully helps solve the issue.
 
-
 ## Good to know
 - Most of the operating system is setup as read-only (exception is a few configs and the cached resized images)
   - SD Cards still wear down over time due to reads/writes, and a higher quality SD card should last longer
 - Due to how the OS is setup, it is _generally safe_ to unplug the Pi after PiSlide OS has started
   - Ideally it would be powered off with the `shutdown` command, but there is currently no easy way to issue the command (network access should allow for it, or adding support for a shutdown button, but neither are currently implemented)
 - The image viewer we use will automatically resize images based on the screen resolution. These are stored in `_cache` in `PHOTOS`. This directory gets cleared on every boot, so you shouldn't have to worry about it!
+
+## Future Plans
+- Animated GIF Support (https://github.com/JarvyJ/rayimg/issues/3)
+- Optional [web interface](https://github.com/JarvyJ/pislide-api) for uploading images and managing settings
+- Basic HW video support? We'll see how difficult this ends up being
 
 ## Community
 Honestly I would love to see/hear about how folks use this. Feel free to post in our [GitHub Discussions](https://github.com/JarvyJ/pislide-os/discussions) section. Also for any features suggestions or questions!
