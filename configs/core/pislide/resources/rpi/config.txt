@@ -1,7 +1,7 @@
 [pi0]
 kernel=zImage
-start_file=start.elf
-fixup_file=fixup.dat
+start_file=start_x.elf
+fixup_file=fixup_x.dat
 dtoverlay=disable-bt
 dtoverlay=vc4-kms-v3d
 
