@@ -4,14 +4,13 @@ on:
   push:
     branches:
       - main
-    tags: [ '*.*.*' ]
 
 jobs:
   build-system-image:
     strategy:
       fail-fast: false
       matrix:
-        system: [pi0, pi0v2, pi1, pi2, pi3, pi4, pi5]
+        system: [pi0v2, pi2, pi3, pi4, pi5] # pi0 and pi1 disabled for now, see https://github.com/JarvyJ/pislide-os/issues/10
 
     runs-on: ubuntu-latest
 
