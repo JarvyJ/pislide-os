@@ -1,9 +1,9 @@
 # PiSlide OS
 PiSlide OS is the simplest way to get photo slideshows working on a Raspberry Pi. It supports most common image formats (JPG, PNG, WEBP, AVIF, JXL, HEIF, HEIC, SVG, BMP, TIFF, and QOI) with plans for animated GIFs and maybe even videos in the future! 
 
-- Images are provided for Pi 2-5 and 0v2. Original Pi 0 and Pi 1 images hopefully coming soon!
-- It has currently been tested and works well on a Pi 3 and 4.
-- We currently don't have all Pi revisions to test with, so if there are any issues, let us know!
+- Images are provided for all Raspberry Pis
+- It has currently been tested and works well on a Pi 0, 3, and 4.
+- We currently don't have all Pi revisions to test with, so if there are any issues, please let us know!
 
 ## Installation
 1. Go to the [releases](https://github.com/JarvyJ/pislide-os/releases) section in GitHub
@@ -12,7 +12,7 @@ PiSlide OS is the simplest way to get photo slideshows working on a Raspberry Pi
     - Under "Operating System", choose "Use Custom" on the bottom of the list and select the image you downloaded
     - We currently do not support any customizations (ssh, wifi, etc)
 4. When flashing is complete, plug the SD card in and boot it up!
-    - First boot can take ~30s, and you will be greeted by a slideshow when completed
+    - First boot can take ~20-60s (depending on the Pi), and you will be greeted by a slideshow when completed
 
 ## Slideshow Setup
 Now that the system has been setup, you can go ahead and setup your own images!
@@ -27,7 +27,7 @@ Duration = 7
 
 # how long the crossfade should happen
 # can set to 0 to disable fade
-TransitionDuration = 3
+TransitionDuration = 3.3
 
 # set to true (without quotes) if there are sub-folders in this directory that have images to display
 Recursive = false
