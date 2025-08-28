@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-LIBVIPS_MESON_VERSION = 8.15.3
+LIBVIPS_MESON_VERSION = 8.17.1
 LIBVIPS_MESON_SOURCE = vips-$(LIBVIPS_MESON_VERSION).tar.xz
 LIBVIPS_MESON_SITE = https://github.com/libvips/libvips/releases/download/v$(LIBVIPS_MESON_VERSION)
 LIBVIPS_MESON_LICENSE = LGPL-2.1+
