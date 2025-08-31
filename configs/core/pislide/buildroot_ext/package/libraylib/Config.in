@@ -1,0 +1,7 @@
+config BR2_PACKAGE_LIBRAYLIB
+	bool "libraylib"
+	depends on (BR2_PACKAGE_LIBDRM && BR2_PACKAGE_MESA3D)
+	help
+	  libraylib - A simple and easy-to-use library to enjoy videogames programming 
+
+	  http://www.raylib.com
