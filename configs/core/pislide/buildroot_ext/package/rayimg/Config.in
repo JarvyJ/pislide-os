@@ -8,5 +8,9 @@ config BR2_PACKAGE_RAYIMG
 	depends on BR2_PACKAGE_HAS_LIBGBM
 	depends on BR2_PACKAGE_LIBDRM
 	depends on BR2_PACKAGE_LIBVIPS_MESON
+	depends on BR2_PACKAGE_LUA_VIPS
+	depends on BR2_PACKAGE_LIBRAYLIB
+	depends on BR2_PACKAGE_LIBVIPS_MESON
+	depends on BR2_PACKAGE_LUAJIT
 	help
 	  Build the binary rayimg
