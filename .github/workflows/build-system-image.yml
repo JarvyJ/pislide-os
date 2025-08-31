@@ -36,7 +36,7 @@ jobs:
           swap-storage: false
     
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@main
         with:
           submodules: recursive
 
