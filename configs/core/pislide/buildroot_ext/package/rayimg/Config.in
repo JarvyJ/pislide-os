@@ -1,9 +1,5 @@
 config BR2_PACKAGE_RAYIMG
 	bool "rayimg"
-	depends on BR2_PACKAGE_HAS_LIBGLES
-	depends on BR2_PACKAGE_HAS_LIBEGL
-	depends on BR2_PACKAGE_HAS_LIBGBM
-	depends on BR2_PACKAGE_LIBDRM
 	depends on BR2_PACKAGE_LIBVIPS_MESON
 	depends on BR2_PACKAGE_LUA_VIPS
 	depends on BR2_PACKAGE_LIBRAYLIB
