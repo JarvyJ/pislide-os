@@ -40,13 +40,12 @@ rm -rf ./skiffos/workspaces/default/build/[library name]
 
 To remove rayimg to rebuild:
 ```
-rm -rf ./skiffos/workspaces/default/build/rayimg-main
-rm -rf ./skiffos/workspaces/default/host/share/go-cache
-rm -rf ./skiffos/workspaces/default/host/share/go-path/pkg/mod
+rm -rf ./skiffos/workspaces/default/build/lua-rayimg-[version]
+rm -rf ./skiffos/buildroot/dl/lua-rayimg
 ```
 
 The big one:
-`make clean all` - will remove everything. I had to do this when i switched from rpi-userland to the mesa driver for gbm.h to be found.
+`make clean` - will remove everything. I had to do this when i switched from rpi-userland to the mesa driver for gbm.h to be found.
 
 ## Building
 ```

@@ -27,7 +27,7 @@ dtoverlay=disable-bt
 dtoverlay=vc4-kms-v3d
 
 [pi3]
-kernel=Image
+kernel=zImage
 start_file=start_x.elf
 fixup_file=fixup_x.dat
 dtoverlay=disable-bt

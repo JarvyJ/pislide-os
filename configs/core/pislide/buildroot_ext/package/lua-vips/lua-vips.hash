@@ -1,5 +1,2 @@
 # computed by luarocks/buildroot
-sha256  3d8de09cd43a60a005ac769ee1cedc515952c892d63cba9ac925ed02afc98091  lua-vips-1.1-12.src.rock
-
-# locally computed
-sha256  9c60064047b0f41092ee714d205b4b915f1da147fdf9afc4b3ee7bcf028a2238  lua-vips-1.1/LICENSE
+sha256  fd20ebb8c4dc92e2619c4a7cb3b4ebb486953fad06c2e995221d9bb3c5ad6ebf  lua-vips-1.1-12.src.rock

@@ -1,7 +1,8 @@
-config BR2_PACKAGE_RAYIMG
-	bool "rayimg"
+config BR2_PACKAGE_LUA_RAYIMG
+	bool "lua-rayimg"
 	depends on BR2_PACKAGE_LIBVIPS_MESON
 	depends on BR2_PACKAGE_LUA_VIPS
+	depends on BR2_PACKAGE_LUAFILESYSTEM
 	depends on BR2_PACKAGE_LIBRAYLIB
 	depends on BR2_PACKAGE_LIBVIPS_MESON
 	depends on BR2_PACKAGE_LUAJIT
