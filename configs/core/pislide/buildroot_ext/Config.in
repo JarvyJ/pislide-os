@@ -1,4 +1,5 @@
 source "$BR2_EXTERNAL_RAYIMG_PATH/package/libraylib/Config.in"
 source "$BR2_EXTERNAL_RAYIMG_PATH/package/libvips-meson/Config.in"
+source "$BR2_EXTERNAL_RAYIMG_PATH/package/lua-lpath/Config.in"
 source "$BR2_EXTERNAL_RAYIMG_PATH/package/lua-rayimg/Config.in"
 source "$BR2_EXTERNAL_RAYIMG_PATH/package/lua-vips/Config.in"
