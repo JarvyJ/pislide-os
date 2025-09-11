@@ -1,6 +1,5 @@
 config BR2_PACKAGE_LUA_VIPS
 	bool "lua-vips"
-	select BR2_PACKAGE_LUA_VIPS
 	depends on BR2_PACKAGE_LIBVIPS_MESON
 	help
 	  Lua binding for the libvips image processing library 
