@@ -4,7 +4,7 @@ After=mnt-photos.mount
 
 [Service]
 Type=simple
-Environment=DISPLAY_ERROR=1 CACHE_DIR=/mnt/photos/_cache
+Environment=DISPLAY_ERROR_ON_SCREEN=1 CACHE_DIR=/mnt/photos/_cache
 ExecStart=/bin/sh -c "cd /mnt/photos && rayimg \"$(cat active_slideshow.txt)\""
 Restart=on-failure
 RestartSec=12
